@@ -4,96 +4,291 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meipuratchi | Team Workflow & Structure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #192441;
+      --secondary: #2a3a6b;
+      --accent: #4a6bff;
+      --light-bg: #f8faff;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --error: #f44336;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     header {
-      background-color: #192441;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 1rem 2rem;
+      padding: 1.5rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 30%);
+      pointer-events: none;
     }
 
     header img {
       height: 50px;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
     }
 
     header h1 {
       margin: 0;
       font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
     h2 {
-      color: #192441;
-      margin-top: 2rem;
+      color: var(--primary);
+      margin: 2rem 0 1.5rem;
+      font-weight: 600;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.35em;
+      height: 1.2em;
+      width: 6px;
+      background: var(--accent);
+      border-radius: 3px;
     }
 
     ul {
       margin-left: 1.5rem;
+      list-style-type: none;
+    }
+
+    li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    li::before {
+      content: '➤';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
     }
 
     .flow-diagram {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
-      background-color: #eef1f8;
-      border-radius: 6px;
-      margin-top: 1rem;
+      padding: 2.5rem;
+      background-color: var(--light-bg);
+      border-radius: 12px;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-diagram::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary), var(--accent));
+      background-size: 200% 100%;
+      animation: gradientFlow 3s ease infinite;
     }
 
     .box {
-      background-color: #ffffff;
-      border: 2px solid #192441;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
+      background-color: var(--card-bg);
+      border: 2px solid var(--primary);
+      padding: 1.2rem 1.8rem;
+      border-radius: 10px;
       text-align: center;
-      font-weight: bold;
-      color: #192441;
+      font-weight: 600;
+      color: var(--primary);
       position: relative;
-      animation: floatBox 2s ease-in-out infinite alternate;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      z-index: 1;
+      min-width: 120px;
+    }
+
+    .box::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 10px;
+      background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      color: white;
+      border-color: transparent;
+    }
+
+    .box:hover::after {
+      opacity: 1;
     }
 
     .arrow {
       font-size: 2rem;
-      color: #192441;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .arrow::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-top: 3px solid var(--accent);
+      border-right: 3px solid var(--accent);
+      transform: rotate(45deg);
       animation: pulseArrow 1.5s ease-in-out infinite;
     }
 
-    @keyframes floatBox {
-      from { transform: translateY(0px); }
-      to { transform: translateY(-5px); }
-    }
-
-    @keyframes pulseArrow {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
     .team-box {
-      margin: 1rem 0;
+      margin: 1.2rem 0;
+      padding: 1.2rem 1.5rem;
+      background-color: var(--light-bg);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .team-box:hover {
+      transform: translateX(5px);
+      border-left-color: var(--accent);
+      box-shadow: 4px 0 12px rgba(0,0,0,0.05);
     }
 
     .team-box strong {
-      color: #192441;
+      color: var(--primary);
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    .team-box::before {
+      content: '▹';
+      color: var(--accent);
+      margin-right: 0.5rem;
+    }
+
+    @keyframes floatBox {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseArrow {
+      0%, 100% { opacity: 0.6; transform: rotate(45deg) scale(1); }
+      50% { opacity: 1; transform: rotate(45deg) scale(1.2); }
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      
+      .container {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+      
+      .flow-diagram {
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+      
+      .box {
+        padding: 0.8rem 1rem;
+        min-width: 100px;
+        font-size: 0.9rem;
+      }
+      
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    /* Fancy hover effects */
+    .container {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .container:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -107,39 +302,39 @@
     <h2>🔁 Workflow Overview</h2>
     <div class="flow-diagram">
       <div class="box">Admin</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Data Miner</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Technician</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Designer</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Translator</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Statistician</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">UX Analyst</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Support Team</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Social Media</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Scheduler</div>
-      <div class="arrow">➡</div>
+      <div class="arrow"></div>
       <div class="box">Innovator</div>
     </div>
 
     <h2>📊 Data Flow Structure</h2>
     <ul>
-      <li>➤ Raw course data (Google, Govt portals) → <strong>Data Miner</strong></li>
-      <li>➤ Structured info → <strong>Technician</strong> (uploads into database)</li>
-      <li>➤ Page layout / graphics → <strong>Designer</strong></li>
-      <li>➤ Content in Tamil/English → <strong>Translator</strong></li>
-      <li>➤ Analytics reports → <strong>Statistician</strong></li>
-      <li>➤ UX feedback → <strong>UX Analyst</strong></li>
-      <li>➤ Student issues → <strong>Support Team</strong></li>
-      <li>➤ Public announcements → <strong>Social Media Manager</strong></li>
-      <li>➤ Task status → <strong>Admin & Scheduler</strong></li>
+      <li>Raw course data (Google, Govt portals) → <strong>Data Miner</strong></li>
+      <li>Structured info → <strong>Technician</strong> (uploads into database)</li>
+      <li>Page layout / graphics → <strong>Designer</strong></li>
+      <li>Content in Tamil/English → <strong>Translator</strong></li>
+      <li>Analytics reports → <strong>Statistician</strong></li>
+      <li>UX feedback → <strong>UX Analyst</strong></li>
+      <li>Student issues → <strong>Support Team</strong></li>
+      <li>Public announcements → <strong>Social Media Manager</strong></li>
+      <li>Task status → <strong>Admin & Scheduler</strong></li>
     </ul>
 
     <h2>👥 Team Roles Snapshot</h2>
@@ -155,5 +350,38 @@
     <div class="team-box"><strong>Scheduler:</strong> Organizes and reminds about tasks</div>
     <div class="team-box"><strong>Innovator:</strong> Develops new ideas and tools</div>
   </div>
+
+  <script>
+    // Add subtle animations on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('.box');
+      const teamBoxes = document.querySelectorAll('.team-box');
+      
+      boxes.forEach((box, index) => {
+        box.style.animationDelay = `${index * 0.1}s`;
+      });
+      
+      teamBoxes.forEach((box, index) => {
+        box.style.animationDelay = `${index * 0.05}s`;
+      });
+      
+      // Add intersection observer for scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.box, .team-box, h2').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>
