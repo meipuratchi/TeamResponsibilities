@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meipuratchi | Team Workflow & Structure</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #192441;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #192441;
+      margin-top: 2rem;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+
+    .flow-diagram {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      background-color: #eef1f8;
+      border-radius: 6px;
+      margin-top: 1rem;
+    }
+
+    .box {
+      background-color: #ffffff;
+      border: 2px solid #192441;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      color: #192441;
+      position: relative;
+      animation: floatBox 2s ease-in-out infinite alternate;
+    }
+
+    .arrow {
+      font-size: 2rem;
+      color: #192441;
+      animation: pulseArrow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes floatBox {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-5px); }
+    }
+
+    @keyframes pulseArrow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .team-box {
+      margin: 1rem 0;
+    }
+
+    .team-box strong {
+      color: #192441;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="mei_logo.png" alt="Meipuratchi Logo">
+    <h1>Meipuratchi Team Workflow & Data Flow</h1>
+  </header>
+
+  <div class="container">
+    <h2>🔁 Workflow Overview</h2>
+    <div class="flow-diagram">
+      <div class="box">Admin</div>
+      <div class="arrow">➡</div>
+      <div class="box">Data Miner</div>
+      <div class="arrow">➡</div>
+      <div class="box">Technician</div>
+      <div class="arrow">➡</div>
+      <div class="box">Designer</div>
+      <div class="arrow">➡</div>
+      <div class="box">Translator</div>
+      <div class="arrow">➡</div>
+      <div class="box">Statistician</div>
+      <div class="arrow">➡</div>
+      <div class="box">UX Analyst</div>
+      <div class="arrow">➡</div>
+      <div class="box">Support Team</div>
+      <div class="arrow">➡</div>
+      <div class="box">Social Media</div>
+      <div class="arrow">➡</div>
+      <div class="box">Scheduler</div>
+      <div class="arrow">➡</div>
+      <div class="box">Innovator</div>
+    </div>
+
+    <h2>📊 Data Flow Structure</h2>
+    <ul>
+      <li>➤ Raw course data (Google, Govt portals) → <strong>Data Miner</strong></li>
+      <li>➤ Structured info → <strong>Technician</strong> (uploads into database)</li>
+      <li>➤ Page layout / graphics → <strong>Designer</strong></li>
+      <li>➤ Content in Tamil/English → <strong>Translator</strong></li>
+      <li>➤ Analytics reports → <strong>Statistician</strong></li>
+      <li>➤ UX feedback → <strong>UX Analyst</strong></li>
+      <li>➤ Student issues → <strong>Support Team</strong></li>
+      <li>➤ Public announcements → <strong>Social Media Manager</strong></li>
+      <li>➤ Task status → <strong>Admin & Scheduler</strong></li>
+    </ul>
+
+    <h2>👥 Team Roles Snapshot</h2>
+    <div class="team-box"><strong>Admin:</strong> Manages platform & team coordination</div>
+    <div class="team-box"><strong>Technician:</strong> Uploads and updates website data</div>
+    <div class="team-box"><strong>Designer:</strong> Creates attractive UI and visual content</div>
+    <div class="team-box"><strong>Data Miner:</strong> Researches and collects course info</div>
+    <div class="team-box"><strong>Translator:</strong> Converts & corrects content in Tamil/English</div>
+    <div class="team-box"><strong>Statistician:</strong> Tracks data metrics and insights</div>
+    <div class="team-box"><strong>UX Analyst:</strong> Tests and recommends UI improvements</div>
+    <div class="team-box"><strong>Support:</strong> Helps students with issues</div>
+    <div class="team-box"><strong>Social Media:</strong> Posts updates & events</div>
+    <div class="team-box"><strong>Scheduler:</strong> Organizes and reminds about tasks</div>
+    <div class="team-box"><strong>Innovator:</strong> Develops new ideas and tools</div>
+  </div>
+</body>
+</html>
